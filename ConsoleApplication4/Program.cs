@@ -23,7 +23,7 @@ namespace ConsoleApplication4
         static void Main(string[] args)
         {
             Rover[] rovers = new Rover[ApplicationConfigReader.RoverSize];              // Arrange Rovers for mission
-            var spaceUpperBounds = UIController.Current.PromptUpperGridBounds();        // Arrange upper bound for research area
+            UIController.Current.PromptUpperGridBounds();        // Arrange upper bound for research area
             for (int i = 0; i < rovers.Length; i++)
             {
                 var roverInitialState = UIController.Current.PromptRoverInitalState();  // Place rover on the selected are at Mars
@@ -31,6 +31,10 @@ namespace ConsoleApplication4
                 Rover rover = new Rover(roverInitialState);                             // Start rover engine
                 rover.ProcessSignal(signals);                                           // Run rover!! Investigate the area
                 rovers[i] = rover;                                                      // Park the rover and save results 
+                if (i == 0)
+                {
+                    UIController.FirstRoverLaunched = true;                             // If successfuly launched first rover
+                }
             }
             foreach (var rover in rovers)
             {

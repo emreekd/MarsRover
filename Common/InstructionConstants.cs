@@ -15,5 +15,10 @@ namespace Common
         public static readonly string GetInitialState = "GetInitialState";
         public static readonly string ErrorFirstFormat = "ErrorFirstFormat";
         public static readonly string GetRoverSignals = "GetRoverSignals";
+        public static readonly string AskUpperBounds = "AskUpperBounds";
+        public static readonly string AskInitialState = "AskInitialState";
+        public static readonly string AskInstructions = "AskInstructions";
+        public static readonly string GetInitialStateOthers = "GetInitialStateOthers";
+        public static readonly string BoundExceedError = "BoundExceedError";
     }
 }

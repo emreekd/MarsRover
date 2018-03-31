@@ -1,0 +1,36 @@
+﻿{
+    "Instructions": [
+        {
+            "Key": "GetUpperCoordinate",
+            "Message": "Hey, Rovers are awake. They need to know upper bounds of research area. What is the upper bounds?"
+        },
+        {
+            "Key": "GetInitialState",
+            "Message": "Good, they will investigate the identified area, but first align the rover on the identified area. What is the inital state?(point and direction in format X Y D like 0 0 N}): "
+        },
+        {
+            "Key": "GetInitialStateOthers",
+            "Message": "Great, the rover is working on instructions!, Next rover ready to launch. What is the inital state?(point and direction in format X Y D like 0 0 N}): "
+        },
+        {
+            "Key": "ErrorFirstFormat",
+            "Message": "Opss, something went wrong. I guess non-gravity area may the reason. Rover waiting for another try. Let's try again."
+        },
+        {
+            "Key": "GetRoverSignals",
+            "Message": "Ok!, Rover sent a signal that Mars' weather fine and its ready to explore. What is the instructions?"
+        },
+        {
+            "Key": "AskUpperBounds",
+            "Message":  "What is the upper bounds?"
+        },
+        {
+            "Key": "AskInitialState",
+            "Message":  "What is the inital state?(point and direction in format X Y D like 0 0 N}):"
+        },
+        {
+            "Key": "AskInstructions",
+            "Message":  "What is the instructions?"
+        }
+    ]
+}

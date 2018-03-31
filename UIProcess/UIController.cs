@@ -44,8 +44,8 @@ namespace UIProcess
         /// <summary>
         /// Instructions for user prompts
         /// </summary>
-        private Instruction[] _instructions;
-        public Instruction[] Instructions
+        private static Instruction[] _instructions;
+        public static Instruction[] Instructions
         {
             get
             {
@@ -56,6 +56,11 @@ namespace UIProcess
                 return _instructions;
             }
         }
+        /// <summary>
+        /// Control for first rover launched
+        /// </summary>
+        public static bool FirstRoverLaunched { get; set; }
+        public static Point SpaceUpperBound { get; set; }
         #endregion
 
         #region User Interactions
@@ -63,7 +68,7 @@ namespace UIProcess
         /// Get upper bound of space from user
         /// </summary>
         /// <returns>Space's upper bound point</returns>
-        public Point PromptUpperGridBounds()
+        public void PromptUpperGridBounds()
         {
             string output;
             if (ApplicationConfigReader.InstructionsEnabled)
@@ -73,11 +78,11 @@ namespace UIProcess
                 while (!Regex.IsMatch(output, RegexConstants.CoordinatePointRegex))
                 {
                     Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetUpperCoordinate).Message);
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskUpperBounds).Message);
                     output = Console.ReadLine();
                 }
                 var coordinates = output.Split(' ').Select(p => Convert.ToInt32(p)).ToArray();
-                return new Point(coordinates[0], coordinates[1]);
+                SpaceUpperBound = new Point(coordinates[0], coordinates[1]);
             }
             else
             {
@@ -87,7 +92,7 @@ namespace UIProcess
                     output = Console.ReadLine();
                 }
                 var coordinates = output.Split(' ').Select(p => Convert.ToInt32(p)).ToArray();
-                return new Point(coordinates[0], coordinates[1]);
+                SpaceUpperBound = new Point(coordinates[0], coordinates[1]);
             }
         }
         /// <summary>
@@ -99,16 +104,32 @@ namespace UIProcess
             string output;
             if (ApplicationConfigReader.InstructionsEnabled)
             {
-                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message);
-                output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex))
+                if (FirstRoverLaunched)
                 {
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message);
-                    output = Console.ReadLine();
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialStateOthers).Message);
                 }
-                var stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
-                var coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
+                else
+                {
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message);
+                }
+                output = Console.ReadLine();
+                string[] stateInformations = new string[3];
+                Point coordinates = null;
+                while (!Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex) || !IsInBound(coordinates))
+                {
+                    if (!IsInBound(coordinates))
+                    {
+                        Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.BoundExceedError).Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
+                    }
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInitialState).Message);
+                    output = Console.ReadLine();
+                    stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
+                    coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
+                }
                 return new State { Point = coordinates, Direction = (DirectionEnum)Enum.Parse(typeof(DirectionEnum), stateInformations[2].ToUpper()) };
             }
             else
@@ -121,6 +142,27 @@ namespace UIProcess
                 var stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
                 var coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
                 return new State { Point = coordinates, Direction = (DirectionEnum)Enum.Parse(typeof(DirectionEnum), stateInformations[2]) };
+            }
+        }
+        /// <summary>
+        /// Checks whether given co-ordinate point 
+        /// is in identified research area
+        /// </summary>
+        /// <param name="coordinates">Co-ordinate point</param>
+        /// <returns>check result</returns>
+        private bool IsInBound(Point coordinates)
+        {
+            if (coordinates == null)
+            {
+                return false;
+            }
+            else if (coordinates.X >= 0 && coordinates.X <= SpaceUpperBound.X && coordinates.Y >= 0 && coordinates.Y <= SpaceUpperBound.Y)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         /// <summary>
@@ -137,13 +179,13 @@ namespace UIProcess
                 while (!Regex.IsMatch(output, RegexConstants.RoverInstructionRegex))
                 {
                     Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetRoverSignals).Message);
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInstructions).Message);
                     output = Console.ReadLine();
                 }
                 var signals = output.ToCharArray().Select(k => IdentifyInstruction(k)).ToArray();
                 return signals;
             }
-            else 
+            else
             {
                 output = Console.ReadLine();
                 while (!Regex.IsMatch(output, RegexConstants.RoverInstructionRegex))
@@ -151,7 +193,7 @@ namespace UIProcess
                     output = Console.ReadLine();
                 }
                 var signals = output.ToCharArray().Select(k => IdentifyInstruction(k)).ToArray();
-                return signals;   
+                return signals;
             }
         }
         /// <summary>

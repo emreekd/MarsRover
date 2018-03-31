@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Mars Rover - Hepsiburada";
+}
+@using UIProcess;
+@using Common;
+
+<h2>Rover Control Center</h2>
+<div class="container">
+    <div class="rover-control-panel">
+        <p class="error hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message</p>
+        <div class="control-item upper-bound">
+            <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetUpperCoordinate).Message</p>
+            <input class="x-axis" type="text" placeholder="X" /><input class="y-axis" type="text" placeholder="Y" />
+            <div class="step-btn">
+                <input class="first-step-btn" type="button" title="" value="Send Bounds" />
+            </div>
+        </div>
+        <div class="control-item state hidden">
+            <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message</p>
+            <input type="text" placeholder="X" class="x-axis" /><input type="text" placeholder="Y" class="y-axis" /><input type="text" class="direction" placeholder="N" />
+            <div class="step-btn">
+                <input class="second-step-btn" type="button" title="" value="Send Initial State" />
+            </div>
+        </div>
+        <div class="control-item instructions hidden">
+            <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetRoverSignals).Message</p>
+            <input type="text" placeholder="Instruction" class="instruction" />
+            <div class="step-btn">
+                <input class="third-step-btn" type="button" title="" value="Send Instructions" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $().ready(function () {
+        var controller = new RoverPanelController(null,HttpService,ValidationProvider);
+    });
+</script>
