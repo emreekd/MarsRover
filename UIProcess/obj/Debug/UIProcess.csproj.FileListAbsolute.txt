@@ -1,0 +1,13 @@
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\UIProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\UIProcess.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Common.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\ConfigurationUtilities.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Serialization.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Newtonsoft.Json.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Common.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\ConfigurationUtilities.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Serialization.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\bin\Debug\Newtonsoft.Json.xml
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\obj\Debug\UIProcess.csprojResolveAssemblyReference.cache
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\obj\Debug\UIProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\UIProcess\obj\Debug\UIProcess.pdb

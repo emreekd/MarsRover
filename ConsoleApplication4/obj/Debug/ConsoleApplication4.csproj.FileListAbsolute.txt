@@ -1,0 +1,12 @@
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\ConsoleApplication4.exe.config
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\ConsoleApplication4.exe
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\ConsoleApplication4.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\obj\Debug\ConsoleApplication4.csprojResolveAssemblyReference.cache
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\obj\Debug\ConsoleApplication4.exe
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\obj\Debug\ConsoleApplication4.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\Business.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\Common.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\SignalProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\Business.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\Common.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\ConsoleApplication4\bin\Debug\SignalProcess.pdb

@@ -1,0 +1,15 @@
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Business.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Business.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Common.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\SignalProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Common.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\SignalProcess.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\obj\Debug\Business.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\obj\Debug\Business.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\ConfigurationUtilities.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Serialization.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Newtonsoft.Json.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\ConfigurationUtilities.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Serialization.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Business\bin\Debug\Newtonsoft.Json.xml

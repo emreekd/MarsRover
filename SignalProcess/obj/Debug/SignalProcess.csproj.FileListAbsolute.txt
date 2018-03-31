@@ -1,0 +1,13 @@
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\SignalProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\SignalProcess.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Common.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Common.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\obj\Debug\SignalProcess.csprojResolveAssemblyReference.cache
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\obj\Debug\SignalProcess.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\obj\Debug\SignalProcess.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\ConfigurationUtilities.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Serialization.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Newtonsoft.Json.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\ConfigurationUtilities.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Serialization.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\SignalProcess\bin\Debug\Newtonsoft.Json.xml

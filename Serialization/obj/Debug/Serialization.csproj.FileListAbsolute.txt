@@ -1,0 +1,7 @@
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\bin\Debug\Serialization.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\bin\Debug\Serialization.pdb
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\bin\Debug\Newtonsoft.Json.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\bin\Debug\Newtonsoft.Json.xml
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\obj\Debug\Serialization.csprojResolveAssemblyReference.cache
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\obj\Debug\Serialization.dll
+c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Serialization\obj\Debug\Serialization.pdb

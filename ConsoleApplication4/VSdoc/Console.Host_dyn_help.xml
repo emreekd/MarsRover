@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DynamicHelp xmlns="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd">	
+   <LINKGROUP ID="Console.Host" Title="Console.Host Reference Help" Priority="2100">
+      <GLYPH Expanded="vs:/ctxhelp_show.gif" Collapsed="vs:/ctxhelp_hide.gif"/>
+   </LINKGROUP>
+
+
+   <Context>
+      <Keywords>
+         <KItem Name="Console.Host Reference" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Console.Host.chm::/topic_0000000000000001.html" LinkGroup="Console.Host">Console.Host Reference</LItem>
+      </Links>
+   </Context>
+   
+
+</DynamicHelp>
+
