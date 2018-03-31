@@ -41,7 +41,7 @@ namespace ConsoleApplication4
                 Console.WriteLine(String.Format("{0} {1} {2}",                          // Print the final state of each rover
                     rover.Context.GetRoverState().Point.X,
                     rover.Context.GetRoverState().Point.Y,
-                    rover.Context.GetRoverState().Direction.ToString()));
+                    rover.Context.GetRoverState().Direction.ToString().Substring(0,1)));
             }
             Console.Read();
         }

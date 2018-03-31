@@ -71,29 +71,16 @@ namespace UIProcess
         public void PromptUpperGridBounds()
         {
             string output;
-            if (ApplicationConfigReader.InstructionsEnabled)
+            Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetUpperCoordinate).Message);
+            output = Console.ReadLine();
+            while (!Regex.IsMatch(output, RegexConstants.CoordinatePointRegex))
             {
-                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetUpperCoordinate).Message);
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskUpperBounds).Message);
                 output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.CoordinatePointRegex))
-                {
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskUpperBounds).Message);
-                    output = Console.ReadLine();
-                }
-                var coordinates = output.Split(' ').Select(p => Convert.ToInt32(p)).ToArray();
-                SpaceUpperBound = new Point(coordinates[0], coordinates[1]);
             }
-            else
-            {
-                output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.CoordinatePointRegex))
-                {
-                    output = Console.ReadLine();
-                }
-                var coordinates = output.Split(' ').Select(p => Convert.ToInt32(p)).ToArray();
-                SpaceUpperBound = new Point(coordinates[0], coordinates[1]);
-            }
+            var coordinates = output.Split(' ').Select(p => Convert.ToInt32(p)).ToArray();
+            SpaceUpperBound = new Point(coordinates[0], coordinates[1]);
         }
         /// <summary>
         /// Get initial co-ordinate point and direction of rover
@@ -102,47 +89,36 @@ namespace UIProcess
         public State PromptRoverInitalState()
         {
             string output;
-            if (ApplicationConfigReader.InstructionsEnabled)
+            string[] stateInformations = new string[3];
+            Point coordinates = null;
+            if (FirstRoverLaunched)
             {
-                if (FirstRoverLaunched)
-                {
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialStateOthers).Message);
-                }
-                else
-                {
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message);
-                }
-                output = Console.ReadLine();
-                string[] stateInformations = new string[3];
-                Point coordinates = null;
-                while (!Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex) || !IsInBound(coordinates))
-                {
-                    if (!IsInBound(coordinates))
-                    {
-                        Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.BoundExceedError).Message);
-                    }
-                    else
-                    {
-                        Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    }
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInitialState).Message);
-                    output = Console.ReadLine();
-                    stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
-                    coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
-                }
-                return new State { Point = coordinates, Direction = (DirectionEnum)Enum.Parse(typeof(DirectionEnum), stateInformations[2].ToUpper()) };
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialStateOthers).Message);
             }
             else
             {
-                output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex))
-                {
-                    output = Console.ReadLine();
-                }
-                var stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
-                var coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
-                return new State { Point = coordinates, Direction = (DirectionEnum)Enum.Parse(typeof(DirectionEnum), stateInformations[2]) };
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message);
             }
+            output = Console.ReadLine();
+            stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
+            coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
+            while (!Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex) || !IsInBound(coordinates))
+            {
+                if (!IsInBound(coordinates) && coordinates != null)
+                {
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.BoundExceedError).Message);
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInitialState).Message);
+                }
+                else if (coordinates != null && !Regex.IsMatch(output, RegexConstants.RoverInitialPointRegex))
+                {
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
+                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInitialState).Message);
+                }
+                output = Console.ReadLine();
+                stateInformations = output.Split(' ').Select(p => p.ToString()).ToArray();
+                coordinates = new Point(Convert.ToInt32(stateInformations[0]), Convert.ToInt32(stateInformations[1]));
+            }
+            return new State { Point = coordinates, Direction = (DirectionEnum)Enum.Parse(typeof(DirectionEnum), stateInformations[2].ToUpper()) };
         }
         /// <summary>
         /// Checks whether given co-ordinate point 
@@ -172,29 +148,16 @@ namespace UIProcess
         public Signal[] PromptRoverSignals()
         {
             string output;
-            if (ApplicationConfigReader.InstructionsEnabled)
+            Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetRoverSignals).Message);
+            output = Console.ReadLine();
+            while (!Regex.IsMatch(output, RegexConstants.RoverInstructionRegex))
             {
-                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.GetRoverSignals).Message);
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
+                Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInstructions).Message);
                 output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.RoverInstructionRegex))
-                {
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message);
-                    Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.AskInstructions).Message);
-                    output = Console.ReadLine();
-                }
-                var signals = output.ToCharArray().Select(k => IdentifyInstruction(k)).ToArray();
-                return signals;
             }
-            else
-            {
-                output = Console.ReadLine();
-                while (!Regex.IsMatch(output, RegexConstants.RoverInstructionRegex))
-                {
-                    output = Console.ReadLine();
-                }
-                var signals = output.ToCharArray().Select(k => IdentifyInstruction(k)).ToArray();
-                return signals;
-            }
+            var signals = output.ToCharArray().Select(k => IdentifyInstruction(k)).ToArray();
+            return signals;
         }
         /// <summary>
         /// Identify the given char as a signal
