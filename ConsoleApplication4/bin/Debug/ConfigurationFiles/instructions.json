@@ -13,6 +13,10 @@
             "Message": "Great, the rover is working on instructions!, Next rover ready to launch. What is the inital state?(point and direction in format X Y D like 0 0 N}): "
         },
         {
+            "Key": "RoverPositionMessage",
+            "Message": "Hmm.. Rovers has been working for a while. Huh... I got signals from them. They are on positions:"
+        },
+        {
             "Key": "ErrorFirstFormat",
             "Message": "Opss, something went wrong. I guess non-gravity area may the reason. Rover waiting for another try. Let's try again."
         },

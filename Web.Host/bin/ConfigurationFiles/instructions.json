@@ -6,15 +6,23 @@
         },
         {
             "Key": "GetInitialState",
-            "Message": "Good, they will investigate the identified area, but first align the rover on the identified area. What is the inital state?(point and direction in format X Y D like 0 0 N}): "
+            "Message": "Good, they will investigate the identified area, but first align each rover on the identified area. Enter the inital state of each rover?(point and direction in format X Y D like 0 0 N}): "
         },
         {
             "Key": "GetInitialStateOthers",
             "Message": "Great, the rover is working on instructions!, Next rover ready to launch. What is the inital state?(point and direction in format X Y D like 0 0 N}): "
         },
         {
+            "Key": "RoverPositionMessage",
+            "Message": "Hmm.. Rovers has been working for a while. Huh... I got signals from them. They are on positions:"
+        },
+        {
             "Key": "ErrorFirstFormat",
             "Message": "Opss, something went wrong. I guess non-gravity area may the reason. Rover waiting for another try. Let's try again."
+        },
+        {
+            "Key": "BoundExceedError",
+            "Message": "Opps, you are going to restricted area. Don't go over the upper bounds."
         },
         {
             "Key": "GetRoverSignals",

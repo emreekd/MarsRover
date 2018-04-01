@@ -28,7 +28,7 @@ namespace ConsoleApplication4
             {
                 var roverInitialState = UIController.Current.PromptRoverInitalState();  // Place rover on the selected are at Mars
                 var signals = UIController.Current.PromptRoverSignals().ToList();       // Get instructions for rover
-                Rover rover = new Rover(roverInitialState);                             // Start rover engine
+                Rover rover = new Rover(roverInitialState,UIController.SpaceUpperBound);// Start rover engine
                 rover.ProcessSignal(signals);                                           // Run rover!! Investigate the area
                 rovers[i] = rover;                                                      // Park the rover and save results 
                 if (i == 0)
@@ -36,12 +36,13 @@ namespace ConsoleApplication4
                     UIController.FirstRoverLaunched = true;                             // If successfuly launched first rover
                 }
             }
-            foreach (var rover in rovers)
+            UIController.Current.MissionCompletedMessage();
+            for (int i = 0; i < rovers.Length; i++)
             {
-                Console.WriteLine(String.Format("{0} {1} {2}",                          // Print the final state of each rover
-                    rover.Context.GetRoverState().Point.X,
-                    rover.Context.GetRoverState().Point.Y,
-                    rover.Context.GetRoverState().Direction.ToString().Substring(0,1)));
+                Console.WriteLine(String.Format("Rover {0} Position {1} {2} {3}", (i+1) ,                       // Print the final state of each rover
+                    rovers[i].Context.GetRoverState().Point.X,
+                    rovers[i].Context.GetRoverState().Point.Y,
+                    rovers[i].Context.GetRoverState().Direction.ToString().Substring(0, 1)));
             }
             Console.Read();
         }

@@ -103,6 +103,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoverActionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">
@@ -136,6 +136,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{ccb91805-e821-4386-ba69-0fbd79b14f5a}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConfigurationUtilities\ConfigurationUtilities.csproj">
+      <Project>{6b0a783a-71b1-4444-936a-bc944397f0ac}</Project>
+      <Name>ConfigurationUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\UIProcess\UIProcess.csproj">
       <Project>{793febc5-e52f-44f8-aa59-0efbccd44af2}</Project>

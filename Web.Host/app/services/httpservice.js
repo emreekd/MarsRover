@@ -42,11 +42,10 @@ var HttpService = (function (state) {
                 alert(e);
             },
             success: function (response) {
-                var result = response["d"];
                 if (config && config.showLoading) {
                     HideLoadingPanel();
                 }
-                return callback(result);
+                return callback(response);
             }
         });
     }

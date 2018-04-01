@@ -20,5 +20,6 @@ namespace Common
         public static readonly string AskInstructions = "AskInstructions";
         public static readonly string GetInitialStateOthers = "GetInitialStateOthers";
         public static readonly string BoundExceedError = "BoundExceedError";
+        public static readonly string RoverPositionMessage = "RoverPositionMessage";
     }
 }

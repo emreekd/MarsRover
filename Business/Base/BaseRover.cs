@@ -16,10 +16,11 @@ namespace Business.Base
     public abstract class BaseRover : IRover
     {
         public RoverContext Context { get; set; }
-        public BaseRover(State initialState)
+        public BaseRover(State initialState,Point upperBound)
         {
             this.Context = new RoverContext();
             this.Context.SetRoverState(initialState);
+            this.Context.UpperBound = upperBound;
         }
         /// <summary>
         /// Process given signals and make Rover work

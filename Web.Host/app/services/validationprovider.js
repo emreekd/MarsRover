@@ -11,25 +11,25 @@ var ValidationProvider = (function () {
     }
     function isPointValid(val) {
         var isValid = val.match(/^\d\s\d$/);
-        showError(isValid);
+        showError(isValid,"upperbound");
         return isValid;
     }
     function isStateValid(val) {
         var isValid = val.match(/^\d\s\d\s[nwseNWSE]$/);
-        showError(isValid);
+        showError(isValid,"states");
         return isValid;
     }
     function isInstractionValid(val) {
         var isValid = val.match(/^[lrmLRM]{1,}$/);
-        showError(isValid);
+        showError(isValid,"instructions");
         return isValid;
     }
-    function showError(isValid) {
+    function showError(isValid,type) {
         if (isValid) {
-            $('.error').addClass('hidden');
+            $('.error.'+type).addClass('hidden');
         }
         else {
-            $('.error').removeClass('hidden');
+            $('.error.'+type).removeClass('hidden');
         }
     }
     if (!validationProviderInstance)

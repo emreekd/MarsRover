@@ -1,6 +1,12 @@
 ﻿body {
     padding-top: 50px;
+    font-size:14px;
     padding-bottom: 20px;
+}
+body input[type=button]
+{
+    background:none;
+    border:none;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -15,7 +21,17 @@ select,
 textarea {
     max-width: 280px;
 }
-
+.clear{
+    clear:both;
+}
+.error{
+    background: #ff6348;
+    padding: 11px;
+    color: white;
+}
+.rover-control-panel {
+    width:400px;
+}
 .rover-control-panel input[type=text]{
     width:40px;
     padding:5px;
@@ -23,4 +39,13 @@ textarea {
 }
 .rover-control-panel .instruction{
     width:200px !important;
+}
+.rover-control-panel input[type=button]
+{
+    margin:10px 0px;
+    float:right;
+    background-color:#5352ed;
+    color:white;
+    padding:8px;
+    border-radius:50px;
 }

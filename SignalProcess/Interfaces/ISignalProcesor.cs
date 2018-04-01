@@ -12,6 +12,6 @@ namespace SignalProcess.Interfaces
     /// </summary>
     public interface ISignalProcesor
     {
-        void ProcessSignal(State state);
+        void ProcessSignal(State state,Point upperBound);
     }
 }

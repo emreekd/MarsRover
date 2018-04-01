@@ -169,5 +169,10 @@ namespace UIProcess
             return new Signal { SignalType = (SignalTypeEnum)Enum.Parse(typeof(SignalTypeEnum), k.ToString().ToUpper()) };
         }
         #endregion
+
+        public void MissionCompletedMessage()
+        {
+            Console.WriteLine(Instructions.First(k => k.Key == InstructionConstants.RoverPositionMessage).Message);
+        }
     }
 }

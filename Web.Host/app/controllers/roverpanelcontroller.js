@@ -11,24 +11,90 @@ var RoverPanelController = (function (state, httpService) {
         vm.httpService = httpService;
         vm.validationProvider = validationProvider;
         vm.state = state = {};
+        /*
+        * Get upper bounds and set it on state
+        */
         $('.first-step-btn').on('click', function () {
             var upperBounds = $('.upper-bound .x-axis').val().concat(" ", $('.upper-bound .y-axis').val());
             if (validationProvider.isPointValid(upperBounds)) {
-                vm.state.upperBounds = upperBounds;
+                $(this).attr('disabled', 'disabled');
+                $(this).val("Locked");
+                vm.state.upperBounds = { X: $('.upper-bound .x-axis').val(), Y: $('.upper-bound .y-axis').val() };
                 $('.rover-control-panel .control-item.state').removeClass('hidden');
             }
-            else {
-                $('.error').removeClass('hidden');
-            }
         });
+        /*
+        * Get initial state of each rover and keep rovers on state
+        */
         $('.second-step-btn').on('click', function () {
-            var state = $('.state .x-axis').val().concat(" ", $('.state .y-axis').val()," ",$('.state .direction').val());
-            if (validationProvider.isStateValid(state)) {
-                vm.state.state = state;
+            var rovers = [];
+            $('.state .x-axis').each(function (index) {
+                if (!rovers[$(this).data('rovercode') - 1]) {
+                    rovers[$(this).data('rovercode') - 1] = {};
+                }
+                rovers[$(this).data('rovercode') - 1].X = $(this).val();
+            });
+            $('.state .y-axis').each(function (index) {
+                if (!rovers[$(this).data('rovercode') - 1]) {
+                    rovers[$(this).data('rovercode') - 1] = {};
+                }
+                rovers[$(this).data('rovercode') - 1].Y = $(this).val();
+            });
+            $('.state .direction').each(function (index) {
+                if (!rovers[$(this).data('rovercode') - 1]) {
+                    rovers[$(this).data('rovercode') - 1] = {};
+                }
+                rovers[$(this).data('rovercode') - 1].Direction = $(this).val();
+            });
+            // check whether states are valid and manage error
+            var statesValid = true;
+            for (var i = 0; i < rovers.length; i++) {
+                if (!validationProvider.isStateValid(rovers[i].X + " " + rovers[i].Y + " " + rovers[i].Direction)) {
+                    statesValid = false;
+                    break;
+                }
+            }
+            if (statesValid) {
+                $(this).attr('disabled', 'disabled');
+                $(this).val("Locked");
+                vm.state.Rovers = rovers;
                 $('.rover-control-panel .control-item.instructions').removeClass('hidden');
             }
-            else {
-                $('.error').removeClass('hidden');
+        });
+        /*
+        * Get instruction for each rover and send that instructions to server and process
+        */
+        $('.third-step-btn').on('click', function () {
+            var instructions = [];
+            var isInsValid = true;
+            $('.instructions .instruction').each(function (index) {
+                var instruction = $(this).val();
+                vm.state.Rovers[$(this).data('rovercode') - 1].Instruction = $(this).val();
+
+            });
+            for (var i = 0; i < vm.state.Rovers.length; i++) {
+                if (!validationProvider.isInstractionValid(vm.state.Rovers[i].Instruction)) {
+                    isInsValid = false;
+                    break;
+                }
+            }
+            //process to result if instruction valid
+            if (isInsValid) {
+                $(this).attr('disabled', 'disabled');
+                $(this).val("Locked");
+                httpService.post("Default/SendInstructions", { UpperBounds: vm.state.upperBounds, Rovers: vm.state.Rovers }, null, function (response) {
+                    if (response && response.length > 0) {
+                        var panel = $('.control-item.result');
+                        panel.removeClass('hidden');
+                        $('html, body').animate({
+                            scrollTop: panel.offset().top
+                        }, 2000);
+                        for (var i = 0; i < response.length; i++) {
+                            var result = "<p>Rover" + (i + 1) + " Position: " + response[i].X + " " + response[i].Y + " " + response[i].Direction + "</p>";
+                            panel.append(result);
+                        }
+                    }
+                });
             }
         });
     }

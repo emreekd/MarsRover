@@ -15,8 +15,8 @@ namespace Business
     /// </summary>
     public class Rover : BaseRover
     {
-        public Rover(State initialState)
-            : base(initialState)
+        public Rover(State initialState,Point upperBound)
+            : base(initialState, upperBound)
         {
 
         }
@@ -28,7 +28,7 @@ namespace Business
         {
             RoverSignalProcesor procesor = new RoverSignalProcesor(signals);
             var currentState = this.Context.GetRoverState();
-            procesor.ProcessSignal(currentState);                              //process signals and change current state
+            procesor.ProcessSignal(currentState,this.Context.UpperBound);                              //process signals and change current state
             Context.SetRoverState(currentState);                               //set rover state
         }
     }

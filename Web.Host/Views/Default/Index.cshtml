@@ -3,11 +3,12 @@
 }
 @using UIProcess;
 @using Common;
+@using ConfigurationUtilities;
 
 <h2>Rover Control Center</h2>
 <div class="container">
     <div class="rover-control-panel">
-        <p class="error hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message</p>
+        <p class="error upperbound hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message</p>
         <div class="control-item upper-bound">
             <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetUpperCoordinate).Message</p>
             <input class="x-axis" type="text" placeholder="X" /><input class="y-axis" type="text" placeholder="Y" />
@@ -15,19 +16,36 @@
                 <input class="first-step-btn" type="button" title="" value="Send Bounds" />
             </div>
         </div>
+        <div class="clear"></div>
+        <p class="error states hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message</p>
         <div class="control-item state hidden">
             <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetInitialState).Message</p>
-            <input type="text" placeholder="X" class="x-axis" /><input type="text" placeholder="Y" class="y-axis" /><input type="text" class="direction" placeholder="N" />
+            @for (int i = 1; i <= ApplicationConfigReader.RoverSize; i++)
+            {
+                <p>Initial Stae of Rover @i</p>
+                <input type="text" placeholder="X" class="x-axis" data-rovercode="@i" /><input type="text" placeholder="Y" class="y-axis" data-rovercode="@i" /><input type="text" class="direction" data-rovercode="@i" placeholder="N" />
+            }
             <div class="step-btn">
-                <input class="second-step-btn" type="button" title="" value="Send Initial State" />
+                <input class="second-step-btn" type="button" title="" value="Send Initial States" />
             </div>
         </div>
+        <div class="clear"></div>
+        <p class="error instructions hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.ErrorFirstFormat).Message</p>
         <div class="control-item instructions hidden">
             <p class="title">@UIController.Instructions.First(k => k.Key == InstructionConstants.GetRoverSignals).Message</p>
-            <input type="text" placeholder="Instruction" class="instruction" />
+            @for (int i = 1; i <= ApplicationConfigReader.RoverSize; i++)
+            {
+                <p>Instructions for Rover @i</p>
+                <input type="text" placeholder="Instruction" class="instruction" data-rovercode="@i" />
+            }
             <div class="step-btn">
                 <input class="third-step-btn" type="button" title="" value="Send Instructions" />
             </div>
+        </div>
+        <div class="clear"></div>
+        <p class="error instructions hidden">@UIController.Instructions.First(k => k.Key == InstructionConstants.RoverPositionMessage).Message</p>
+        <div class="control-item result hidden">
+
         </div>
     </div>
 </div>

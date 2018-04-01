@@ -25,7 +25,7 @@ namespace SignalProcess
         /// Runs rover and change its state with some instructions
         /// </summary>
         /// <param name="initalState">Inital state of rover</param>
-        public override void ProcessSignal(State initalState)
+        public override void ProcessSignal(State initalState, Point upperBound)
         {
             if (this.SignalList != null && this.SignalList.Count > 0)
             {
@@ -38,7 +38,7 @@ namespace SignalProcess
                             RotationHelper.RotateToGivenDirection(initalState, signal.SignalType);//Rotate rover
                             break;
                         case SignalTypeEnum.Move:
-                            MovementHelper.Move(initalState);                                      //Mover rover
+                            MovementHelper.Move(initalState,upperBound);                          //Mover rover
                             break;
                         default:
                             break;

@@ -18,6 +18,6 @@ namespace SignalProcess.Base
         {
             this.SignalList = signals;
         }
-        public abstract void ProcessSignal(State state); // Process signal
+        public abstract void ProcessSignal(State state, Point upperBound); // Process signal
     }
 }

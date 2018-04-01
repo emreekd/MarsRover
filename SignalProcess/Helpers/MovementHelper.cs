@@ -18,7 +18,7 @@ namespace SignalProcess.Helpers
         /// Gets the rover's current state and changes the position on co-ordinate system
         /// </summary>
         /// <param name="roverState">Rover's current state</param>
-        public static void Move(State roverState) 
+        public static void Move(State roverState, Point upperBound)
         {
             int movementSize = ApplicationConfigReader.RoverMovementSize;
             switch (roverState.Direction)
@@ -26,16 +26,20 @@ namespace SignalProcess.Helpers
                 case DirectionEnum.Undefined:
                     break;
                 case DirectionEnum.North:
-                    roverState.Point.Y += movementSize;
+                    if (roverState.Point.Y + movementSize >= 0 && roverState.Point.Y + movementSize <= upperBound.Y)
+                        roverState.Point.Y += movementSize;
                     break;
                 case DirectionEnum.East:
-                    roverState.Point.X += movementSize;
+                    if (roverState.Point.X + movementSize >= 0 && roverState.Point.X + movementSize <= upperBound.X)
+                        roverState.Point.X += movementSize;
                     break;
                 case DirectionEnum.West:
-                    roverState.Point.X -= movementSize;
+                    if (roverState.Point.X - movementSize >= 0 && roverState.Point.X - movementSize <= upperBound.X)
+                        roverState.Point.X -= movementSize;
                     break;
                 case DirectionEnum.South:
-                    roverState.Point.Y -= movementSize;
+                    if (roverState.Point.Y - movementSize >= 0 && roverState.Point.Y - movementSize <= upperBound.Y)
+                        roverState.Point.Y -= movementSize;
                     break;
                 default:
                     break;

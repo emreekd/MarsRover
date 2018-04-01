@@ -2,4 +2,3 @@ c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Co
 c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Common\bin\Debug\Common.pdb
 c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Common\obj\Debug\Common.dll
 c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Common\obj\Debug\Common.pdb
-c:\users\ekaradeniz\documents\visual studio 2013\Projects\ConsoleApplication4\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

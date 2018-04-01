@@ -13,6 +13,7 @@ namespace Business.Base
     public class RoverContext
     {
         private State RoverState;
+        public Point UpperBound { get; set; }
         public RoverContext()
         {
             RoverState = null;
