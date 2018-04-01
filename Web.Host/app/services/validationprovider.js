@@ -8,6 +8,7 @@ var ValidationProvider = (function () {
         this.isPointValid = isPointValid;
         this.isStateValid = isStateValid;
         this.isInstractionValid = isInstractionValid;
+        this.showError = showError;
     }
     function isPointValid(val) {
         var isValid = val.match(/^\d\s\d$/);

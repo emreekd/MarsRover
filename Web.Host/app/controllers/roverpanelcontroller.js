@@ -49,8 +49,16 @@ var RoverPanelController = (function (state, httpService) {
             // check whether states are valid and manage error
             var statesValid = true;
             for (var i = 0; i < rovers.length; i++) {
-                if (!validationProvider.isStateValid(rovers[i].X + " " + rovers[i].Y + " " + rovers[i].Direction)) {
+                if (rovers[i].X >= 0 && rovers[i].X <= vm.state.upperBounds.X
+                    && rovers[i].Y >= 0 && rovers[i].Y <= vm.state.upperBounds.Y) {
+                    if (!validationProvider.isStateValid(rovers[i].X + " " + rovers[i].Y + " " + rovers[i].Direction)) {
+                        statesValid = false;
+                        break;
+                    }
+                }
+                else {
                     statesValid = false;
+                    validationProvider.showError(false, "states");
                     break;
                 }
             }
